@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Header = () => {
@@ -9,31 +10,32 @@ const Header = () => {
     };
 
   return (
-    <header className='fixed top-0 font-poppins bg-white2 text-purple3 flex items-center justify-around h-16 w-full rounded-xl' >
+    <header className='fixed top-2 left-2 md:left-20 2xl:left-96 right-2 md:right-20 2xl:right-96 font-poppins bg-white2 flex items-center justify-between px-7 md:px-10 h-16 rounded-3xl' >
         
         {/* pc navbar */}
         <figure className='cursor-pointer'>
             <img src={logo} alt="NootNote" className='max-w-[150px]'/>
         </figure>    
-        <nav className='hidden lg:flex'>
+        <nav className='hidden lg:flex gap-10'>
             <ul className='flex gap-5 font-medium'>
                 <li>
-                    <button className=' transition-all'>Home</button>
+                    <button className='hover:text-red2 transition-all'>Home</button>
                 </li>
                 <li>
-                    <button className=' transition-all'>Notes</button>
+                    <button className='hover:text-blue2 transition-all'>Learn</button>
                 </li>
                 <li>
-                    <button className=' transition-all'>Subjects</button>
+                    <button className='hover:text-yellow2 transition-all'>Quizzes</button>
                 </li>
                 <li>
+                    <button className='hover:text-red2 transition-all'>Community</button>
                 </li>
             </ul>
-            <button className=' transition-all'><strong>Jansen</strong></button>
+            <Link to='/login' className='hover:text-red2 transition-all'><strong>Login</strong></Link>
         </nav>
         {/* sidebar toggle */}
         <p
-            className="block lg:hidden text-customWhite focus:outline-none hover:text-customGray transition-all"
+            className="block lg:hidden focus:outline-none hover:text-red2 cursor-pointer transition-all"
             onClick={toggleSidebar}
         >
             <svg
@@ -50,9 +52,9 @@ const Header = () => {
 
         {/* mobile sidebar */}
         <div
-                    className={`fixed top-0 right-0 h-screen w-full bg-white2 transform pt-2 px-10 ${
+                    className={`fixed top-0 right-0 h-screen w-full bg-white2 transform pt-2 px-5 md:px-24 lg:px-28 ${
                         isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-                    } transition-transform duration-150 ease-in-out md:hidden`}
+                    } transition-transform duration-150 ease-in-out lg:hidden`}
                 >
                     <div className="flex flex-col h-full">
                         <div className="flex justify-between items-center p-3">
@@ -80,6 +82,9 @@ const Header = () => {
                             </li>
                             <li className="cursor-pointer transition-colors" onClick={toggleSidebar}>
                                 <button>Subjects</button>
+                            </li>
+                            <li className="cursor-pointer transition-colors" onClick={toggleSidebar}>
+                                <Link to='/login' >Login</Link>
                             </li>
                         </ul>
                     </div>
